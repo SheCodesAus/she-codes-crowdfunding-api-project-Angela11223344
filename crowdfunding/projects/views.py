@@ -5,7 +5,7 @@ from django.http import Http404
 from rest_framework import status, generics, permissions
 
 from .models import Project, Pledge
-from .serializers import ProjectSerializer, PledgeSerializer, ProjectDetailSerializer
+from .serializers import ProjectSerializer, PledgeSerializer, ProjectDetailSerializer, PledgeDetailSerializer
 
 from .permissions import IsOwnerOrReadOnly
 
@@ -57,10 +57,78 @@ class ProjectDetail(APIView):
             return Response(serializer.data)
         return Response(serializer.errors)
 
-class PledgeList(generics.ListCreateAPIView):
-    queryset = Pledge.objects.all()
-    serializer_class = PledgeSerializer
+    def delete(self, request, pk):
+        project = self.get_object(pk)
+        data = request.data
+        serializer = ProjectDetailSerializer(
+            instance=project, data=data
+        )
+        if serializer.is_valid():
+            project.delete()
+            return Response(status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors)
 
-    def perform_create(self, serializer):
-        serializer.save(supporter=self.request.user)
+# class PledgeList(generics.ListCreateAPIView):
+class PledgeList(APIView):
+    # queryset = Pledge.objects.all()
+    # serializer_class = PledgeSerializer
+
+    def get(self, request):
+        pledges = Pledge.objects.all()
+        serializer = PledgeSerializer(pledges, many=True)
+        return Response(serializer.data)
+
+    # def perform_create(self, serializer):
+    #     serializer.save(supporter=self.request.user)
+
+    def post(self, request):
+        pledges = PledgeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(supporter=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+class PledgeDetail(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+
+    def get_object(self, pk):
+        try:
+            pledges = Pledge.objects.get(pk=pk)
+            self.check_object_permissions(self.request, pledges)
+            return pledges
+        except Pledge.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk):
+        pledges = self.get_object(pk)
+        serializer = PledgeDetailSerializer(pledges)
+        return Response(serializer.data)
+    
+    def put(self, request, pk):
+        pledges = self.get_object(pk)
+        data = request.data
+        serializer = PledgeDetailSerializer(
+            instance=pledges, data=data, partial=True
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        pledges = self.get_object(pk)
+        data = request.data
+        serializer = PledgeSerializer(instance=pledges, data=data)
+
+        if serializer.is_valid:
+            pledge.delete()
+            return Response(status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors)
+
+    
+
         
