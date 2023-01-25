@@ -93,7 +93,7 @@ class PledgeList(APIView):
         )
 
 class PledgeDetail(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_object(self, pk):
         try:
