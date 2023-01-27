@@ -23,14 +23,14 @@ class CustomUserList(APIView):
 class CustomUserDetail(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    def get_objects(self, pk):
+    def get_object(self, pk):
         try:
             return CustomUser.objects.get(pk=pk)
         except CustomUser.DoesNotExist:
             raise Http404
     
     def get(self, request, pk):
-        user = self.get_objects(pk)
+        user = self.get_object(pk)
         serializer = CustomUserDetailSerializer(user)
         return Response(serializer.data)
 
@@ -54,4 +54,3 @@ class CustomUserDetail(APIView):
             user.delete()
             return Response(status=status.HTTP_202_ACCEPTED)
         return Response(serializer.errors)
-
