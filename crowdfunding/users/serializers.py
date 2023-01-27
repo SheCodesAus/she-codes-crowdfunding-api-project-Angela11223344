@@ -25,5 +25,9 @@ class CustomUserDetailSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         instance.username = validated_data.get('username', instance.username)
         instance.email = validated_data.get('email', instance.email)
+        instance.password = validated_data.get('password', instance.password)
+
+        instance.set_password(validated_data['password'])
+
         instance.save()
         return instance
