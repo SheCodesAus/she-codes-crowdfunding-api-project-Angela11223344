@@ -1,14 +1,21 @@
-# {{ my project title }}
+# Life-sized Lego
 ​
-{{ a paragraph detailing the purpose and target audience }}
+Donate your old pieces of lego to build life-sized things!
+
 ​
 ## Features
+
+--> Create a user account
+--> Create a project
+--> Submit a pledge
+--> Search for keywords in 'Project List'
+--> Search for keywords in 'Pledge List'
 ​
 ### User Accounts
 ​
-- [X] Username
-- [X] Email Address
-- [X] Password
+- [X] Username: 
+- [X] Email Address:
+- [X] Password: 
 ​
 ### Project
 ​
@@ -34,33 +41,33 @@
 - Project
   - [X] Create
   - [X] Retrieve
-  - [ ] Update
-  - [ ] Destroy
+  - [X] Update
+  - [X] Destroy
 - Pledge
   - [X] Create
   - [X] Retrieve
-  - [ ] Update
-  - [ ] Destroy
+  - [X] Update
+  - [X] Destroy
 - User
   - [X] Create
   - [X] Retrieve
-  - [ ] Update
-  - [ ] Destroy
+  - [X] Update
+  - [X] Destroy
 ​
 ### Implement suitable permissions
 ​
 **Note: Not all of these may be required for your project, if you have not included one of these please justify why.**
 ​
 - Project
-  - [ ] Limit who can create
-  - [ ] Limit who can retrieve
-  - [ ] Limit who can update
-  - [ ] Limit who can delete
+  - [X] Limit who can create --> A logged in user can create a project
+  - [X] Limit who can retrieve --> Anyone can have a look at the projects
+  - [X] Limit who can update --> Only the creator of the project can update
+  - [X] Limit who can delete --> Only the creator of the project can delete
 - Pledge
-  - [ ] Limit who can create
-  - [ ] Limit who can retrieve
-  - [ ] Limit who can update
-  - [ ] Limit who can delete
+  - [X] Limit who can create --> A logged in user can create a pledge for a project
+  - [X] Limit who can retrieve --> Anyone can have a look at the list of pledges
+  - [X] Limit who can update --> Only the creator of the pledge can update
+  - [X] Limit who can delete --> Only the creator of the pledge can delete
 - Pledge
   - [ ] Limit who can retrieve
   - [ ] Limit who can update
@@ -70,11 +77,11 @@
 ​
 - [ ] Get returns 200
 - [ ] Create returns 201
-- [ ] Not found returns 404
+- [X] Not found returns 404
 ​
 ### Handle failed requests gracefully 
 ​
-- [ ] 404 response returns JSON rather than text
+- [X] 404 response returns JSON rather than text
 ​
 ### Use token authentication
 ​
@@ -96,7 +103,7 @@
 ​
 ### External libraries used
 ​
-- [ ] django-filter
+- [X] django-filter --> Used to create search bar for 'Project List' 
 ​
 ​
 ## Part A Submission
