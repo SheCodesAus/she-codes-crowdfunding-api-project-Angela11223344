@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from rest_framework import status, generics, permissions, filters
 
 from .models import Project, Pledge
@@ -84,6 +84,7 @@ class ProjectDetail(APIView):
         return Response(serializer.errors)
 
 class PledgeList(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     queryset = Pledge.objects.all()
     serializer_class = PledgeSerializer
     filter_backends = [filters.SearchFilter]

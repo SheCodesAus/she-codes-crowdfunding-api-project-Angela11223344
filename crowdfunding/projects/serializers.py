@@ -11,6 +11,7 @@ class PledgeSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'supporter']
 
 class PledgeDetailSerializer(PledgeSerializer):
+    
 
     def update(self, instance, validated_data):
         instance.amount = validated_data.get('amount', instance.amount)
