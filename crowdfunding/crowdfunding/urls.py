@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 
+from .views import custom404
+
+handler404 = custom404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +28,4 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path("", include('projects.urls')),
 ]
+
