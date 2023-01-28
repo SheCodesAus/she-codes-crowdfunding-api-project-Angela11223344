@@ -3,3 +3,4 @@ djangorestframework==3.14.0
 gunicorn
 whitenoise
 django-cors-headers==3.13.0
+django-filters
