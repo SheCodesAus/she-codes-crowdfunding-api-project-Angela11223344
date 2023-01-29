@@ -4,7 +4,7 @@ from .models import Project, Pledge
 from users.serializers import CustomUserSerializer
 
 class PledgeSerializer(serializers.ModelSerializer):
-
+    
     class Meta:
         model = Pledge
         fields = ['id', 'amount', 'comment', 'anonymous', 'project', 'supporter']
