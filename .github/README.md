@@ -1,3 +1,4 @@
+# Project title: 'MichelangLEGO Designs'
 # Life-sized Lego
 ​
 Donate your old lego bricks to build life-sized things! (Think the pyramids, Big Ben, a space rocket...etc)
@@ -20,9 +21,9 @@ Anyone from ages 4 - 99.
 ​
 ### User Accounts
 ​
-- [X] Username: 
-- [X] Email Address:
-- [X] Password: 
+- [X] Username: Rusty
+- [X] Email Address: RustyDog@mail.com
+- [X] Password: dog
 ​
 ### Project
 ​

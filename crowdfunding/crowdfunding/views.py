@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import JsonResponse
 
 def custom404(request, exception=None):
