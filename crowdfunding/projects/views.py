@@ -149,5 +149,5 @@ class PledgeDetail(APIView):
 
         if serializer.is_valid:
             pledge.delete()
-            return Response(status=status.HTTP_202_ACCEPTED)
+            return Response(status=status.HTTP_204_NO_CONTENT)
         return Response(serializer.errors)

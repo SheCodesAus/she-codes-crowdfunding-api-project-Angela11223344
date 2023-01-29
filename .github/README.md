@@ -1,7 +1,7 @@
 # Project title: 'MichelangLEGO Designs'
 # Life-sized Lego
 ​
-Donate your old lego bricks to build life-sized things! (Think the pyramids, Big Ben, a space rocket...etc)
+Donate your old lego bricks to build life-sized things! (Think the pyramids, Big Ben, a space rocket...anything you can think of!)
 Target audience:
 Anyone from ages 4 - 99.
 --> Parents who are tired of standing on/hoovering up pieces of lego.
@@ -13,7 +13,7 @@ Anyone from ages 4 - 99.
 ## Features
 
 --> Create a user account
---> Update the information in your user account
+--> Update the information in your user account (username, email, first name, last name or password)
 --> Create a project
 --> Submit a pledge to your chosen project
 --> Search for keywords in 'Project List'
@@ -83,8 +83,8 @@ Anyone from ages 4 - 99.
 ​
 ### Implement relevant status codes
 ​
-- [ ] Get returns 200
-- [ ] Create returns 201
+- [X] Get returns 200
+- [X] Create returns 201
 - [X] Not found returns 404
 ​
 ### Handle failed requests gracefully 
