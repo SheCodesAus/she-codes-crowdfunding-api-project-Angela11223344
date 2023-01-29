@@ -77,9 +77,9 @@ Anyone from ages 4 - 99.
   - [X] Limit who can update --> Only the creator of the pledge can update
   - [X] Limit who can delete --> Only the creator of the pledge can delete
 - Pledge
-  - [ ] Limit who can retrieve
-  - [ ] Limit who can update
-  - [ ] Limit who can delete
+  - [X] Limit who can retrieve --> Anyone can see pledges, I didn't see the need to include limits as (although lego is precious), it's probably ok as no money is involved.
+  - [X] Limit who can update --> Only the creator of the pledge can update
+  - [X] Limit who can delete --> Only the creator of the pledge can delete
 ​
 ### Implement relevant status codes
 ​
@@ -93,7 +93,7 @@ Anyone from ages 4 - 99.
 ​
 ### Use token authentication
 ​
-- [X] impliment /api-token-auth/
+- [X] implement /api-token-auth/
 ​
 ## Additional features
 ​
@@ -105,9 +105,9 @@ Implement a search bar so that users can search by project name keyword.
 ​
 Allow users to update their passwords.
 ​
-- [ ] {Title Feature 3}
-​
-{{ description of feature 3 }}
+- [ ] Profile page
+
+Add a profile page for users, showing their projects, pledges and user info.
 ​
 ### External libraries used
 ​
@@ -116,15 +116,14 @@ Allow users to update their passwords.
 ​
 ## Part A Submission
 ​
-- [ ] A link to the deployed project.
-- [ ] A screenshot of Insomnia, demonstrating a successful GET method for any endpoint.
-- [ ] A screenshot of Insomnia, demonstrating a successful POST method for any endpoint.
-- [ ] A screenshot of Insomnia, demonstrating a token being returned.
-- [ ] Your refined API specification and Database Schema.
+- [X] A link to the deployed project.
+- [X] A screenshot of Insomnia, demonstrating a successful GET method for any endpoint.
+- [X] A screenshot of Insomnia, demonstrating a successful POST method for any endpoint.
+- [X] A screenshot of Insomnia, demonstrating a token being returned.
+- [X] Your refined API specification and Database Schema.
 
 ## API Specification:
 
-HTTP Method     URL     Purpose     Request Body        Successful Response Code        Auth/Auth
 
 ​
 ### Step by step instructions for how to register a new user and create a new project (i.e. endpoints and body data).
@@ -136,10 +135,12 @@ curl --request POST \
   --url http://127.0.0.1:8000/users/ \
   --header 'Content-Type: application/json' \
   --data '{
-	"username": "testuser",
-	"email": "not@myemail.com",
-	"password": "not-my-password"
-}'
+        "username": "Sunny",
+        "first_name": "Sunny",
+        "last_name": "Day",
+        "email": "sunnyday@hello.com",
+	      "password": "sunny"
+    }'
 ```
 ​
 2. Sign in User
@@ -149,8 +150,8 @@ curl --request POST \
   --url http://127.0.0.1:8000/api-token-auth/ \
   --header 'Content-Type: application/json' \
   --data '{
-	"username": "testuser",
-	"password": "not-my-password"
+	"username": "Sunny",
+	"password": "sunny"
 }'
 ```
 ​
@@ -159,13 +160,12 @@ curl --request POST \
 ```shell
 curl --request POST \
   --url http://127.0.0.1:8000/projects/ \
-  --header 'Authorization: Token 5b8c82ec35c8e8cb1fac24f8eb6d480a367f322a' \
+  --header 'Authorization: Token d734d9e4949bc686693433529e0c038bb7f36343' \
   --header 'Content-Type: application/json' \
   --data '{
-	"title": "Donate a cat",
-	"description": "Please help, we need a cat for she codes plus, our class lacks meows.",
-	"goal": 1,
-	"image": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Dollar_bill_and_small_change.jpg",
-	"is_open": true,
-	"date_created": "2023-01-28T05:53:46.113Z"
+        "title": "Donate your old lego",
+        "description": "Please help, lego is needed!",
+        "goal": 1000000,
+        "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.BIQRbWecvpHoOrs2_28TowHaF2%26pid%3DApi&f=1&ipt=d41a924863ce4f4924b057cd216e59e1b081a2400d8e95ca81a999409015d090&ipo=images",
+        "is_open": true
 }'
