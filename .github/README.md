@@ -107,7 +107,7 @@ Allow users to update their passwords.
 ​
 - [ ] Profile page
 
-Add a profile page for users, showing their projects, pledges and user info.
+Add a profile page for users, showing their projects, pledges and user info in one place.
 ​
 ### External libraries used
 ​
@@ -117,6 +117,8 @@ Add a profile page for users, showing their projects, pledges and user info.
 ## Part A Submission
 ​
 - [X] A link to the deployed project.
+https://dry-morning-2259.fly.dev/projects/
+
 - [X] A screenshot of Insomnia, demonstrating a successful GET method for any endpoint.
 - [X] A screenshot of Insomnia, demonstrating a successful POST method for any endpoint.
 - [X] A screenshot of Insomnia, demonstrating a token being returned.
@@ -124,7 +126,7 @@ Add a profile page for users, showing their projects, pledges and user info.
 
 ## API Specification:
 
-
+Please see screenshot in images folder
 ​
 ### Step by step instructions for how to register a new user and create a new project (i.e. endpoints and body data).
 ​
