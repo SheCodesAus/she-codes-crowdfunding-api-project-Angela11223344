@@ -1,13 +1,19 @@
 # Life-sized Lego
 ​
-Donate your old pieces of lego to build life-sized things!
+Donate your old lego bricks to build life-sized things! (Think the pyramids, Big Ben, a space rocket...etc)
+Target audience:
+Anyone from ages 4 - 99.
+--> Parents who are tired of standing on/hoovering up pieces of lego.
+--> Grandparents who have downsized and no longet have space to store lego.
+--> Children who want to make some space for more new lego/cooler sets.
+--> Adults who want to make space for more new lego/cooler sets.
 
 ​
 ## Features
 
 --> Create a user account
 --> Create a project
---> Submit a pledge
+--> Submit a pledge to your chosen project
 --> Search for keywords in 'Project List'
 --> Search for keywords in 'Pledge List'
 ​
@@ -59,7 +65,7 @@ Donate your old pieces of lego to build life-sized things!
 **Note: Not all of these may be required for your project, if you have not included one of these please justify why.**
 ​
 - Project
-  - [X] Limit who can create --> A logged in user can create a project
+  - [X] Limit who can create --> Only a logged in user can create a new project
   - [X] Limit who can retrieve --> Anyone can have a look at the projects
   - [X] Limit who can update --> Only the creator of the project can update
   - [X] Limit who can delete --> Only the creator of the project can delete
@@ -89,13 +95,13 @@ Donate your old pieces of lego to build life-sized things!
 ​
 ## Additional features
 ​
-- [ ] {Title Feature 1}
+- [X] Search bar.
 ​
-{{ description of feature 1 }}
+Implement a search bar so that users can search by project name keyword.
 ​
-- [ ] {Title Feature 2}
+- [X] Update password.
 ​
-{{ description of feature 2 }}
+Allow users to update their passwords.
 ​
 - [ ] {Title Feature 3}
 ​
@@ -103,7 +109,7 @@ Donate your old pieces of lego to build life-sized things!
 ​
 ### External libraries used
 ​
-- [X] django-filter --> Used to create search bar for 'Project List' 
+- [X] django-filter --> Used to create search bar for 'Project List' and 'Pledge List'. 
 ​
 ​
 ## Part A Submission
