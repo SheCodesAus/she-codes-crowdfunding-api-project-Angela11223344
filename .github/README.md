@@ -12,6 +12,7 @@ Anyone from ages 4 - 99.
 ## Features
 
 --> Create a user account
+--> Update the information in your user account
 --> Create a project
 --> Submit a pledge to your chosen project
 --> Search for keywords in 'Project List'
