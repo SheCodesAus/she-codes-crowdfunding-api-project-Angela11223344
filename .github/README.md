@@ -21,9 +21,9 @@ Anyone from ages 4 - 99.
 ​
 ### User Accounts
 ​
-- [X] Username: Rusty
-- [X] Email Address: RustyDog@mail.com
-- [X] Password: dog
+- [X] Username
+- [X] Email Address
+- [X] Password
 ​
 ### Project
 ​
