@@ -13,7 +13,7 @@ from .permissions import IsOwnerOrReadOnly, IsSupporterOrReadOnly
 # Create your views here.
 
 class ProjectList(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     filter_backends = [filters.SearchFilter]
@@ -83,40 +83,40 @@ class ProjectDetail(APIView):
             return Response(status=status.HTTP_202_ACCEPTED)
         return Response(serializer.errors)
 
-class PledgeList(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Pledge.objects.all()
-    serializer_class = PledgeSerializer
-    filter_backends = [filters.SearchFilter]
+# class PledgeList(generics.ListCreateAPIView):
+#     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+#     queryset = Pledge.objects.all()
+#     serializer_class = PledgeSerializer
+#     filter_backends = [filters.SearchFilter]
 
-    search_fields = ['comment']
+#     search_fields = ['comment']
 
-    def perform_create(self, serializer):
-        serializer.save(supporter=self.request.user)
+#     def perform_create(self, serializer):
+#         serializer.save(supporter=self.request.user)
 
-    def perform_update(self, serializer):
-        serializer.save(supporter=self.request.user)
+#     def perform_update(self, serializer):
+#         serializer.save(supporter=self.request.user)
 
-# class PledgeList(APIView):
+class PledgeList(APIView):
 
-#     def get(self, request):
-#         pledges = Pledge.objects.all()
-#         serializer = PledgeSerializer(pledges, many=True)
-#         return Response(serializer.data)
+    def get(self, request):
+        pledges = Pledge.objects.all()
+        serializer = PledgeSerializer(pledges, many=True)
+        return Response(serializer.data)
 
-#     def post(self, request):
-#         pledges = PledgeSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save(supporter=request.user)
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+    def post(self, request):
+        pledges = PledgeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(supporter=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-#         return Response(
-#             serializer.errors,
-#             status=status.HTTP_400_BAD_REQUEST
-#         )
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
 class PledgeDetail(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSupporterOrReadOnly]
 
     def get_object(self, pk):
         try:
