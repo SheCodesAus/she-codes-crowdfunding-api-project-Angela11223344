@@ -7,7 +7,7 @@ from rest_framework import status, generics, permissions, filters
 from .models import Project, Pledge
 from .serializers import ProjectSerializer, PledgeSerializer, ProjectDetailSerializer, PledgeDetailSerializer
 
-from .permissions import IsOwnerOrReadOnly, IsSupporterOrReadOnly
+from .permissions import IsOwnerOrReadOnly, IsSupporterOrReadOnly, IsAuthenticatedOrReadOnly
 
 
 # Create your views here.
@@ -44,9 +44,8 @@ class ProjectList(generics.ListCreateAPIView):
 
 
 class ProjectDetail(APIView):
-    # permission_classes = [
-    #     permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
-    # ]
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def get_object(self, pk):
         try:
@@ -116,7 +115,7 @@ class PledgeList(generics.ListCreateAPIView):
 #         )
 
 class PledgeDetail(APIView):
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSupporterOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSupporterOrReadOnly]
 
     def get_object(self, pk):
         try:
