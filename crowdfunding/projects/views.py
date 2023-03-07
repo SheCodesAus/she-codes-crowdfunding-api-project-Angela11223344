@@ -84,7 +84,7 @@ class ProjectDetail(APIView):
         return Response(serializer.errors)
 
 class PledgeList(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSupporterOrReadOnly]
     queryset = Pledge.objects.all()
     serializer_class = PledgeSerializer
     filter_backends = [filters.SearchFilter]
@@ -116,7 +116,7 @@ class PledgeList(generics.ListCreateAPIView):
 #         )
 
 class PledgeDetail(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSupporterOrReadOnly]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSupporterOrReadOnly]
 
     def get_object(self, pk):
         try:
