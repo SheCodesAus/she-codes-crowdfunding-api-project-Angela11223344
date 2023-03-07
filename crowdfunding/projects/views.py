@@ -7,7 +7,7 @@ from rest_framework import status, generics, permissions, filters
 from .models import Project, Pledge
 from .serializers import ProjectSerializer, PledgeSerializer, ProjectDetailSerializer, PledgeDetailSerializer
 
-from .permissions import IsOwnerOrReadOnly, IsSupporterOrReadOnly, IsAuthenticatedOrReadOnly
+from .permissions import IsOwnerOrReadOnly, IsSupporterOrReadOnly
 
 
 # Create your views here.
@@ -73,17 +73,12 @@ class ProjectDetail(APIView):
 
     def delete(self, request, pk):
         project = self.get_object(pk)
-        data = request.data
-        serializer = ProjectDetailSerializer(
-            instance=project, data=data
-        )
-        if serializer.is_valid():
-            project.delete()
-            return Response(status=status.HTTP_202_ACCEPTED)
-        return Response(serializer.errors)
+        project.delete()
+        return Response(status=status.HTTP_202_ACCEPTED)
+        
 
 class PledgeList(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSupporterOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Pledge.objects.all()
     serializer_class = PledgeSerializer
     filter_backends = [filters.SearchFilter]
@@ -115,7 +110,7 @@ class PledgeList(generics.ListCreateAPIView):
 #         )
 
 class PledgeDetail(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSupporterOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_object(self, pk):
         try:
@@ -143,10 +138,5 @@ class PledgeDetail(APIView):
 
     def delete(self, request, pk):
         pledges = self.get_object(pk)
-        data = request.data
-        serializer = PledgeSerializer(instance=pledges, data=data)
-
-        if serializer.is_valid:
-            pledge.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-        return Response(serializer.errors)
+        pledges.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
