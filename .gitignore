@@ -5,3 +5,7 @@ __pycache__/
 *.sqlite3
 *.vscode
 staticfiles
+# Python temp files
+__pycache__/
+*.py[cod]
+*$py.class
