@@ -30,7 +30,7 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "False") !="False"
 # DEBUG = False
 # DEBUG = True
 
-ALLOWED_HOSTS = ['dry-morning-2259.fly.dev', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['dry-morning-2259.fly.dev', '127.0.0.1', 'localhost', 'delightful-monstera-90d249.netlify.app']
 CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev']
 
