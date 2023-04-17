@@ -14,7 +14,7 @@ class PledgeSerializer(serializers.ModelSerializer):
     def get_supporter(self, instance):
         
         if instance.anonymous:
-            return "The Lego Elves!"
+            return "a kind Lego Elf"
         else:
             return instance.supporter.username
 
